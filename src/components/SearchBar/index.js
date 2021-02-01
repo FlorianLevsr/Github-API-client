@@ -34,7 +34,7 @@ const SearchBar = ({ inputValue, onChangeHandler, onSubmitHandler, loading }) =>
 };
 
 SearchBar.propTypes = {
-    value: PropTypes.string.isRequired,
+    value: PropTypes.string,
     onChangeHandler: PropTypes.func.isRequired,
     onSubmitHandler: PropTypes.func.isRequired,
     loading: PropTypes.bool.isRequired

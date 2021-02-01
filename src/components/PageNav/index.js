@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Button } from 'semantic-ui-react';
 
 import './style.scss';
 
-const PageNav = ({ changePage, activePage, loading, list }) => {
+const PageNav = ({ changePage, activePage, loading, list, resultPerPage }) => {
 
     let component = (
 
@@ -22,7 +23,7 @@ const PageNav = ({ changePage, activePage, loading, list }) => {
             
             <Button 
             fluid
-            disabled={loading }
+            disabled={loading || list.length < resultPerPage}
             onClick={() => {
                 changePage(activePage + 1);
             }}
@@ -43,6 +44,16 @@ const PageNav = ({ changePage, activePage, loading, list }) => {
         component
     );
 
+};
+
+//changePage, activePage, loading, list, resultPerPage
+
+PageNav.proptypes = {
+    changePage: PropTypes.func.isRequired,
+    activePage: PropTypes.number.isRequired,
+    loading: PropTypes.bool.isRequired,
+    list: PropTypes.array.isRequired,
+    resultPerPage: PropTypes.number.isRequired
 };
 
 export default PageNav;

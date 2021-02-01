@@ -45,9 +45,8 @@ const Message = ({ total, loading }) => {
 };
 
 Message.propTypes = {
-    header: PropTypes.string.isRequired,
-    content: PropTypes.string.isRequired,
-    total: PropTypes.number
+    total: PropTypes.number,
+    loading: PropTypes.bool.isRequired
 };
 
 export default Message;

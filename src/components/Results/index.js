@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Card } from 'semantic-ui-react';
 
@@ -10,14 +11,17 @@ const Results = ({ list }) => {
 
         <div className="result-item">
 
-            <Card
-                fluid
-                image={owner.avatar_url}
-                header={name}
-                description={description}
-                meta={owner.login}
-                onClick={() => window.open(owner.html_url, '_blank')}
-            />
+            <Link to={`/${owner.login}/${name}`}>
+
+                <Card
+                    fluid
+                    image={owner.avatar_url}
+                    header={name}
+                    description={description}
+                    meta={owner.login}
+                />
+
+            </Link>
 
         </div>
 
@@ -37,18 +41,17 @@ const Results = ({ list }) => {
 
         <div className="result-container">
 
-            {
-                list.map((item) => {
-                    return <Item key={item.id} {...item} />
-                })
-            }
+                {
+                    list.map((item) => {
+                        return <Item key={item.id} {...item} />
+                    })
+                }
 
         </div>
 
     );
 
 };
-
 
 Results.prototypes = {
     list: PropTypes.arrayOf(PropTypes.object).isRequired
